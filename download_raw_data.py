@@ -19,7 +19,7 @@ SHEET_ID = '1slolMpeZE9kJHlFnz0qlyyLnju639JGoNTGTu0myVMQ'
 
 SCOPE = ['https://www.googleapis.com/auth/spreadsheets.readonly', 'https://www.googleapis.com/auth/drive.readonly']
 
-CREDFILE =  'hs-american-voices-project-b12d8ea9a82f.json'
+CREDFILE =  'hs-american-voices-project-e9bc74b03eef.json'
 RANGE = 'Dashboard for Audio Files and Field Notes'
 
 def get_sheets_data(SHEET_ID):
@@ -176,13 +176,15 @@ def save_files(row):
 
 ## TODO: Also very messy
 ## This should be in a def __main__() 
-sheet = get_sheets_data(SHEET_ID)
-sheet = sheet.iloc[-100:-75]
 
-for i in range(1,6): 
-    sheet['file_obj_'+str(i)] = sheet['Audio file upload ' + str(i)].apply(lambda x: get_drive_file(clean_url(x)))
-print(sheet)
-
-# sheet.to_pickle('tmp.pkl')
-# sheet = pd.read_pickle('tmp.pkl')
-sheet.apply(save_files, axis=1)
+## USAGE 
+## sheet = get_sheets_data(SHEET_ID)
+## sheet = sheet.iloc[-100:-75]
+## 
+## for i in range(1,6): 
+##     sheet['file_obj_'+str(i)] = sheet['Audio file upload ' + str(i)].apply(lambda x: get_drive_file(clean_url(x)))
+## print(sheet)
+## 
+## # sheet.to_pickle('tmp.pkl')
+## # sheet = pd.read_pickle('tmp.pkl')
+## sheet.apply(save_files, axis=1)
